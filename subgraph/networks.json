@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "Token": {
+      "address": "0x8A04d904055528a69f3E4594DDA308A31aeb8457",
+      "startBlock": 12720932
+    }
+  }
+}
