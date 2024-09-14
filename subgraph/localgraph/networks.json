@@ -1,0 +1,8 @@
+{
+  "arbitrum-sepolia": {
+    "ProjectManager": {
+      "address": "0x493C2fe01E2a5EA4330c50eF654AE85F29B39fCF",
+      "startBlock": 70362956
+    }
+  }
+}

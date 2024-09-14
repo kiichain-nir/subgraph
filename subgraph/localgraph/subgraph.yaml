@@ -1,0 +1,57 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ProjectManager
+    network: testnet
+    source:
+      address: "0xd61fcc9cb7ece68a313e7ec3e3c977a4649a942c"
+      abi: ProjectManager
+      startBlock: 1484938
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BeneficiaryAdded
+        - ProjectCreated
+        - TransferToVendor
+        - VendorAdded
+      abis:
+        - name: ProjectManager
+          file: ./abis/ProjectManager.json
+      eventHandlers:
+        - event: BeneficiaryAdded(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleBeneficiaryAdded
+        - event: ProjectCreated(string,string,indexed address,indexed uint256)
+          handler: handleProjectCreated
+        - event: TransferToVendor(indexed address,indexed address,uint256)
+          handler: handleTransferToVendor
+        - event: VendorAdded(indexed address,indexed uint256)
+          handler: handleVendorAdded
+      file: ./src/project-manager.ts
+templates:
+  - name: ProjectToken
+    kind: ethereum
+    network: testnet
+    source:
+      abi: ProjectToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Transfer
+      abis:
+        - name: ProjectToken
+          file: ./abis/ProjectToken.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/project-token.ts
