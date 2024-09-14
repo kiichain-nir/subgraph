@@ -1,18 +1,20 @@
 {
-  "name": "hedera",
+  "name": "kiichain",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ hedera",
-    "create-local": "graph create --node http://localhost:9020/ hedera",
-    "remove-local": "graph remove --node http://localhost:9020/ hedera",
-    "deploy-local": "graph deploy --node http://localhost:9020/ --ipfs http://localhost:4001 hedera",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ kiichain",
+    "create-local": "graph create --node http://localhost:9020/ kiichain",
+    "remove-local": "graph remove --node http://localhost:9020/ kiichain",
+    "deploy-local": "graph deploy --node http://localhost:9020/ --ipfs http://localhost:4001 kiichain",
     "test": "graph test"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.71.2",
     "@graphprotocol/graph-ts": "0.32.0"
   },
-  "devDependencies": { "matchstick-as": "0.5.0" }
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  }
 }
