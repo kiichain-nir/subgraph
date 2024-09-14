@@ -4,15 +4,22 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
+    "clean": "rm -rf build generated node_modules",
+    "all": "yarn clean && yarn install && yarn codegen && yarn build",
     "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ kiichain",
     "create-local": "graph create --node http://localhost:9020/ kiichain",
     "remove-local": "graph remove --node http://localhost:9020/ kiichain",
     "deploy-local": "graph deploy --node http://localhost:9020/ --ipfs http://localhost:4001 kiichain",
+    "create-prod": "dotenv -- cross-var graph create --node %GRAPH_URL% kiichain",
+    "remove-prod": "dotenv -- cross-var graph remove --node %GRAPH_URL% kiichain",
+    "deploy-prod": "dotenv -- cross-var graph deploy --node %GRAPH_URL% --ipfs %IPFS_URL% kiichain",
     "test": "graph test"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.71.2",
-    "@graphprotocol/graph-ts": "0.32.0"
+    "@graphprotocol/graph-ts": "0.32.0",
+    "cross-var": "^1.1.0",
+    "dotenv-cli": "^7.4.2"
   },
   "devDependencies": {
     "matchstick-as": "0.5.0"
